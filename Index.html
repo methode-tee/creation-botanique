@@ -1,0 +1,419 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Création Botanique Sur-Mesure - Méthode Tee</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --brand: #53644A;
+            --brand-dark: #44523d;
+            --accent: #8C7561;
+            --paper: #F4F1EA;
+            --bg: #FCFAF6;
+            --ink: #2D241E;
+            --gold: #C5B18D;
+            --soft: #EFE8DC;
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background:
+                radial-gradient(circle at top right, rgba(197,177,141,.18), transparent 22%),
+                radial-gradient(circle at bottom left, rgba(83,100,74,.10), transparent 28%),
+                linear-gradient(180deg, #EEE7DE 0%, #F8F5EF 36%, #F3EEE6 100%);
+            color: var(--ink);
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, .font-serif { font-family: 'Playfair Display', serif; }
+
+        .app-shell {
+            width: 100%;
+            max-width: 430px;
+            min-height: 100vh;
+            background:
+                linear-gradient(180deg, rgba(255,255,255,.88) 0%, rgba(252,250,246,.96) 100%);
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 0 60px rgba(45,36,30,0.12);
+            overflow: hidden;
+            border-left: 1px solid rgba(140,117,97,.08);
+            border-right: 1px solid rgba(140,117,97,.08);
+        }
+
+        .hero-section {
+            background:
+                radial-gradient(circle at top right, rgba(255,255,255,.10), transparent 24%),
+                linear-gradient(160deg, #596B50 0%, #46533F 60%, #3E4937 100%);
+            border-bottom-left-radius: 42px;
+            border-bottom-right-radius: 42px;
+            padding: 40px 24px 66px 24px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            width: 260px;
+            height: 260px;
+            right: -70px;
+            top: -70px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .hero-section::after {
+            content: "";
+            position: absolute;
+            right: -38px;
+            bottom: -64px;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.06);
+        }
+
+        .glass-btn {
+            width: 42px;
+            height: 42px;
+            background: rgba(255,255,255,0.16);
+            backdrop-filter: blur(10px);
+            border-radius: 999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.14);
+        }
+
+        .hero-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.16);
+            backdrop-filter: blur(10px);
+            color: white;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            padding: 8px 12px;
+            border-radius: 999px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(255,255,255,0.12);
+        }
+
+        .hero-title {
+            font-size: 40px;
+            line-height: 0.98;
+            margin: 0 0 14px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-text {
+            font-size: 14px;
+            color: rgba(255,255,255,0.82);
+            line-height: 1.7;
+            font-weight: 300;
+            max-width: 320px;
+        }
+
+        .intro-card,
+        .pricing-card,
+        .promise-card,
+        .faq-item,
+        .step-card,
+        .soft-box {
+            background: rgba(255,255,255,0.92);
+            border: 1px solid rgba(140, 117, 97, 0.10);
+            box-shadow: 0 14px 34px rgba(45,36,30,0.05);
+        }
+
+        .intro-card {
+            border-radius: 30px;
+            padding: 30px;
+        }
+
+        .step-card {
+            border-radius: 22px;
+            padding: 20px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            width: 34px;
+            height: 34px;
+            flex-shrink: 0;
+            background: linear-gradient(180deg, #F4F1EA 0%, #EEE6D8 100%);
+            color: var(--brand);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
+        }
+
+        .benefit-chip {
+            font-size: 10px;
+            background: linear-gradient(180deg, #F5F1E9 0%, #EEE6D8 100%);
+            color: var(--accent);
+            padding: 8px 12px;
+            border-radius: 999px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
+        }
+
+        .soft-box {
+            background: linear-gradient(180deg, #F5F1E9 0%, #EEE8DE 100%);
+            border-radius: 24px;
+            padding: 22px;
+        }
+
+        .grid-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 18px;
+            padding: 14px;
+            border: 1px solid rgba(140,117,97,0.08);
+            box-shadow: 0 6px 18px rgba(45,36,30,0.04);
+        }
+
+        .floating-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 430px;
+            background: rgba(255,255,255,0.94);
+            backdrop-filter: blur(18px);
+            padding: 16px 20px calc(18px + env(safe-area-inset-bottom));
+            border-top: 1px solid rgba(140,117,97,.10);
+            z-index: 50;
+            box-shadow: 0 -12px 30px rgba(45,36,30,.06);
+        }
+
+        .btn-brand {
+            background: linear-gradient(180deg, var(--brand) 0%, var(--brand-dark) 100%);
+            color: white;
+            width: 100%;
+            padding: 18px;
+            border-radius: 22px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 12px;
+            transition: all 0.3s;
+            box-shadow: 0 14px 28px -8px rgba(83, 100, 74, 0.38);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-brand:hover { transform: translateY(-1px); }
+
+        .mini-note {
+            font-size: 11px;
+            color: #7B7168;
+            line-height: 1.6;
+        }
+
+        .eyebrow {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #AA9E91;
+        }
+
+        .faq-item {
+            border-radius: 20px;
+            padding: 18px;
+        }
+
+        .premium-divider {
+            width: 72px;
+            height: 4px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, var(--gold), rgba(197,177,141,0.2));
+            margin-top: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-shell">
+
+        <nav class="absolute top-0 left-0 w-full p-6 z-10 flex justify-between items-center text-white">
+            <button onclick="history.back()" class="glass-btn">
+                <i data-lucide="arrow-left" class="w-5 h-5"></i>
+            </button>
+            <span class="text-[10px] font-bold uppercase tracking-widest">L'Atelier</span>
+            <div class="w-10"></div>
+        </nav>
+
+        <div class="hero-section">
+            <i data-lucide="leaf" class="absolute -right-10 -bottom-10 w-64 h-64 text-white/5 rotate-12"></i>
+            <div class="mt-12 relative z-10">
+                <span class="hero-chip">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                    Pharmacopée & Synergies
+                </span>
+                <h1 class="hero-title">Ta création botanique<br><span class="italic text-white/90">sur-mesure</span></h1>
+                <p class="hero-text">
+                    Je conseille des plantes unitaires, des synergies déjà pensées, ou je formule moi-même des mélanges adaptés à tes douleurs, tes besoins et ton terrain du moment.
+                </p>
+            </div>
+        </div>
+
+        <main class="px-6 -mt-8 relative z-10 pb-36">
+
+            <div class="intro-card mb-8">
+                <div class="eyebrow mb-3">Approche signature</div>
+                <h2 class="font-serif text-2xl font-bold text-[var(--brand)] mb-3">Une approche vraiment personnalisée</h2>
+                <p class="text-xs text-stone-500 leading-relaxed mb-6">
+                    En pratique, je ne me limite pas à “une plante pour un symptôme”. J’observe plutôt l’ensemble : le problème principal, le terrain, le moment de la journée où cela se manifeste, le rythme de vie, les sensibilités digestives, nerveuses ou féminines… puis je choisis les plantes ou les mélanges les plus cohérents.
+                </p>
+
+                <div class="flex flex-wrap gap-2">
+                    <span class="benefit-chip">🌿 douleurs</span>
+                    <span class="benefit-chip">🌙 sommeil</span>
+                    <span class="benefit-chip">🌸 cycle féminin</span>
+                    <span class="benefit-chip">🥗 digestion</span>
+                    <span class="benefit-chip">⚡ énergie</span>
+                    <span class="benefit-chip">🫶 terrain global</span>
+                </div>
+            </div>
+
+            <h3 class="eyebrow mb-4 px-2">Comment ça fonctionne ?</h3>
+
+            <div class="space-y-4 mb-8">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div>
+                        <h4 class="font-serif font-bold text-[var(--ink)] mb-1">La mini-consultation par message</h4>
+                        <p class="text-[11px] text-stone-500 leading-relaxed">Tu m’écris ton problème, tes douleurs, tes inconforts ou ton besoin du moment. Cela peut se faire en message texte ou vocal selon ce qui t’est le plus simple.</p>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div>
+                        <h4 class="font-serif font-bold text-[var(--ink)] mb-1">L’analyse du besoin</h4>
+                        <p class="text-[11px] text-stone-500 leading-relaxed">Je regarde si le plus pertinent est une plante seule, un mélange déjà existant, ou une formule entièrement sur-mesure pensée pour ton cas précis.</p>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div>
+                        <h4 class="font-serif font-bold text-[var(--ink)] mb-1">La proposition botanique</h4>
+                        <p class="text-[11px] text-stone-500 leading-relaxed">Je te propose ensuite le mélange adapté, l’usage conseillé, la durée, le moment idéal de prise et les recommandations utiles autour.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="soft-box mb-8">
+                <div class="eyebrow mb-3">Possibilités</div>
+                <h3 class="font-serif text-xl font-bold mb-3">Ce que je peux préparer</h3>
+                <div class="grid grid-cols-2 gap-3 text-[11px]">
+                    <div class="grid-card">🌿 Mélange digestion & ventre</div>
+                    <div class="grid-card">🌙 Mélange sommeil & apaisement</div>
+                    <div class="grid-card">🌸 Mélange féminin / cycle</div>
+                    <div class="grid-card">⚡ Mélange énergie & récupération</div>
+                    <div class="grid-card">🫖 Infusion simple déjà prête</div>
+                    <div class="grid-card">🧪 Formule totalement sur-mesure</div>
+                </div>
+            </div>
+
+            <div class="pricing-card rounded-[24px] p-6 mb-8">
+                <div class="flex items-start gap-3">
+                    <div class="w-11 h-11 rounded-2xl bg-[var(--paper)] flex items-center justify-center text-[var(--accent)] shadow-sm">
+                        <i data-lucide="badge-euro" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="eyebrow mb-2">Tarification</div>
+                        <h3 class="font-serif text-xl font-bold mb-2">Tarif sur mesure</h3>
+                        <p class="text-xs text-stone-500 leading-relaxed">
+                            Je ne fixe pas de prix unique à l’avance, car cela dépendra du type de mélange, du nombre de plantes, de la quantité, de la complexité du besoin et du travail de formulation nécessaire.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="promise-card rounded-[24px] p-6 mb-8">
+                <div class="eyebrow mb-2">Promesse</div>
+                <h3 class="font-serif text-xl font-bold mb-3">L’idée ici</h3>
+                <p class="text-xs text-stone-500 leading-relaxed mb-4">
+                    Te permettre d’avoir un échange simple et rapide, puis une proposition botanique beaucoup plus ciblée qu’un simple “achète telle plante”. C’est une façon plus fine, plus sérieuse et plus premium d’aborder la pharmacopée.
+                </p>
+                <div class="premium-divider mb-4"></div>
+                <div class="text-[11px] text-stone-600 space-y-2">
+                    <div>✔ mini-consultation par message</div>
+                    <div>✔ réflexion sur le terrain et le besoin</div>
+                    <div>✔ proposition adaptée</div>
+                    <div>✔ possibilité de mélange sur-mesure</div>
+                </div>
+            </div>
+
+            <div class="space-y-3">
+                <div class="faq-item">
+                    <h4 class="font-serif font-bold mb-2">Dois-je déjà savoir quelles plantes je veux ?</h4>
+                    <p class="text-[11px] text-stone-500 leading-relaxed">
+                        Non. Tu peux simplement venir avec ton problème, ta douleur ou ton besoin. Je t’aide justement à faire le tri.
+                    </p>
+                </div>
+                <div class="faq-item">
+                    <h4 class="font-serif font-bold mb-2">Est-ce forcément un mélange ?</h4>
+                    <p class="text-[11px] text-stone-500 leading-relaxed">
+                        Pas forcément. Parfois une plante seule ou un mélange déjà existant suffit. Le sur-mesure n’est proposé que lorsqu’il apporte une vraie valeur.
+                    </p>
+                </div>
+            </div>
+
+        </main>
+
+        <div class="floating-bar">
+            <div class="mini-note mb-3 text-center">
+                Mini-consultation par message • proposition personnalisée ensuite
+            </div>
+            <button onclick="contactMe()" class="btn-brand">
+                <i data-lucide="message-circle" class="w-5 h-5"></i>
+                Démarrer ma mini-consultation
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        function contactMe() {
+            const phoneNumber = "33662257116";
+            const message = "Bonjour, je souhaiterais une mini-consultation pour un conseil en plantes ou un mélange botanique sur-mesure.";
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
